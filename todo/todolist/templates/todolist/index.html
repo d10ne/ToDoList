@@ -1,0 +1,21 @@
+{% extends 'todolist/base.html' %}
+
+{% block title %}
+Список заданий
+{% endblock %}
+
+{% block content %}
+    <h1>Задания</h1>
+    {% for task in tasks %}
+        <div class="alert alert-info mt-2">
+            <h2>{{ task.title }}</h2>
+            <h6>{{ task.created }}</h6>
+            <p>{{ task.description }}</p>
+            <form action="{% url 'del' task.pk %}" method="POST">
+              {% csrf_token %}
+              <input class="btn btn-default btn-danger" type="submit" value="Удалить"/>
+            </form>
+        </div>
+    {% endfor %}
+{% endblock %}
+

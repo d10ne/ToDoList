@@ -1,0 +1,8 @@
+{% extends "todolist/base.html" %}
+{% block content %}
+    {% block content %}
+    <form action="{% url 'del' task.pk %}" method="POST">
+          {% csrf_token %}
+          <input class="btn btn-default btn-danger" type="submit" value="Удалить"/>
+    </form>
+{% endblock %}
